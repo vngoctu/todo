@@ -1,7 +1,11 @@
 let $ = (query) => document.querySelector(query);
 let todoList = [];
 let todoEditID = document.querySelector("input.todo-edit");
+let inputTodo = document.querySelector("input[name=todo-input]");
+inputTodo.focus();
 let getDataTodo = localStorage.getItem("todo");
+let newUrl = window.location.href;
+window.history.pushState({ path: newUrl }, "", newUrl.split("?")[0]);
 if (getDataTodo) {
   todoList = JSON.parse(localStorage.getItem("todo"));
 }
@@ -52,8 +56,7 @@ function getTodo() {
 function getNewTodo() {
   let btnTodo = document.querySelector("#todo-submit");
   btnTodo.onclick = function (e) {
-    let inputTodo = document.querySelector("input[name=todo-input]").value;
-    if (inputTodo.trim() != "") {
+    if (inputTodo.value.trim() != "") {
       let dataTodo = {
         data: inputTodo,
       };
