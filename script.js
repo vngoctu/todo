@@ -58,7 +58,7 @@ function getNewTodo() {
   btnTodo.onclick = function (e) {
     if (inputTodo.value.trim() != "") {
       let dataTodo = {
-        data: inputTodo,
+        data: inputTodo.value,
       };
       todoList.push(dataTodo);
       localStorage.setItem("todo", JSON.stringify(todoList));
