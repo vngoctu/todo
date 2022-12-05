@@ -37,7 +37,7 @@ function getTodo() {
       </button>
       <div class="collapse navbar-collapse text-right" id="navbarNav${index}">
       ${
-        thisTodo["complete"] == 0
+        (thisTodo["complete"] == 0)
           ? `<button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
                       <i class="fas fa-chevron-up fa-xs pb-1"></i>
                     </button>
