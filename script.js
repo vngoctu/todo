@@ -37,8 +37,8 @@ function getTodo() {
       </button>
       <div class="collapse navbar-collapse text-right" id="navbarNav${index}">
       ${
-        (thisTodo["complete"] == 0)
-          ? `<button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
+        thisTodo["complete"] == 0
+          ? '<button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
                       <i class="fas fa-chevron-up fa-xs pb-1"></i>
                     </button>
                     <button class="down btn btn-primary btn-sm me-1 py-0 pb-1">
@@ -46,7 +46,7 @@ function getTodo() {
                     </button>
                     <button class="edit btn btn-warning btn-sm me-1 py-0 pb-1" data-bs-toggle="modal" data-bs-target="#modal-edit" onclick="editTodo(${index})">
                       <i class="fas fa-pencil-alt fa-xs text-white"></i>
-                    </button>` : `}
+                    </button>' : ''}
                     <button class="del btn btn-danger btn-sm me-1 py-0 pb-1" onclick="delTodo(${index})">
                       <i class="fas fa-times fa-xs"></i>
                     </button>
