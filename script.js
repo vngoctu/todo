@@ -20,10 +20,14 @@ function getTodo() {
   if (getDataTodo) {
     let bigData = todoList.map(
       (thisTodo, index) => `
-              <li class="d-flex align-items-center col-12 px-3 py-2">
-                ${
-                  index + 1
-                }.&emsp;<span class="todo-text col-10 col-md-9 col-lg-9">${
+              <li class="d-flex align-items-center col-12 px-3 py-2 ${
+                thisTodo["complete"] == 1 ? "completed" : ""
+              }">
+                <input type="checkbox" class="me-2" onclick="completeTodo(${index})" ${
+        thisTodo["complete"] == 1 ? "checked" : ""
+      }/>${
+        index + 1
+      }.&emsp;<span class="todo-text col-10 col-md-9 col-lg-9" onclick="completeTodo(${index})">${
         thisTodo["data"]
       }</span>
                   <span class="action col-2 col-md-3 col-lg-3 text-end navbar navbar-expand-md">
@@ -32,7 +36,9 @@ function getTodo() {
         <span class="navbar-toggler-icon fs-6"></span>
       </button>
       <div class="collapse navbar-collapse text-right" id="navbarNav${index}">
-                    <button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
+      ${
+        thisTodo["complete"] == 0
+          ? `<button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
                       <i class="fas fa-chevron-up fa-xs pb-1"></i>
                     </button>
                     <button class="down btn btn-primary btn-sm me-1 py-0 pb-1">
@@ -40,12 +46,14 @@ function getTodo() {
                     </button>
                     <button class="edit btn btn-warning btn-sm me-1 py-0 pb-1" data-bs-toggle="modal" data-bs-target="#modal-edit" onclick="editTodo(${index})">
                       <i class="fas fa-pencil-alt fa-xs text-white"></i>
-                    </button>
+                    </button>`
+          : `
                     <button class="del btn btn-danger btn-sm me-1 py-0 pb-1" onclick="delTodo(${index})">
                       <i class="fas fa-times fa-xs"></i>
                     </button>
                     </div></div>
-                  </span>
+                  </span>`
+      }
               </li>
             `
     );
@@ -59,6 +67,7 @@ function getNewTodo() {
     if (inputTodo.value.trim() != "") {
       let dataTodo = {
         data: inputTodo.value,
+        complete: 0,
       };
       todoList.push(dataTodo);
       localStorage.setItem("todo", JSON.stringify(todoList));
@@ -122,6 +131,17 @@ function delTodo(id) {
     start();
   } else {
   }
+}
+
+function completeTodo(id) {
+  todoList[id].complete = 1;
+  [todoList[id], todoList[todoList.length - 1]] = [
+    todoList[todoList.length - 1],
+    todoList[id],
+  ];
+
+  localStorage.setItem("todo", JSON.stringify(todoList));
+  start();
 }
 
 start();
