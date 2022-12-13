@@ -36,13 +36,19 @@ function getTodo() {
         <span class="navbar-toggler-icon fs-6"></span>
       </button>
       <div class="collapse navbar-collapse text-right" id="navbarNav${index}">
-<button class="up btn btn-primary btn-sm me-1 py-0 pb-1">
+<button class="up btn btn-primary btn-sm me-1 py-0 pb-1 ${
+        thisTodo["complete"] == 1 ? "d-none" : ""
+      }">
                       <i class="fas fa-chevron-up fa-xs pb-1"></i>
                     </button>
-                    <button class="down btn btn-primary btn-sm me-1 py-0 pb-1">
+                    <button class="down btn btn-primary btn-sm me-1 py-0 pb-1 ${
+                      thisTodo["complete"] == 1 ? "d-none" : ""
+                    }">
                       <i class="fas fa-chevron-down fa-xs pb-1"></i>
                     </button>
-                    <button class="edit btn btn-warning btn-sm me-1 py-0 pb-1" data-bs-toggle="modal" data-bs-target="#modal-edit" onclick="editTodo(${index})">
+                    <button class="edit btn btn-warning btn-sm me-1 py-0 pb-1 ${
+                      thisTodo["complete"] == 1 ? "d-none" : ""
+                    }" data-bs-toggle="modal" data-bs-target="#modal-edit" onclick="editTodo(${index})">
                       <i class="fas fa-pencil-alt fa-xs text-white"></i>
                     </button>
                     <button class="del btn btn-danger btn-sm me-1 py-0 pb-1" onclick="delTodo(${index})">
