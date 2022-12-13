@@ -30,7 +30,7 @@ function getTodo() {
       }.&emsp;<span class="todo-text col-10 col-md-9 col-lg-9" onclick="completeTodo(${index})">${
         thisTodo["data"]
       }</span>
-                  <span class="action col-2 col-md-3 col-lg-3 text-end navbar navbar-expand-md">
+                  <span class="action col-2 col-md-3 col-lg-3 navbar navbar-expand-md">
                     <div class="ms-1">
       <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav${index}" aria-controls="navbarNav${index}" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon fs-6"></span>
